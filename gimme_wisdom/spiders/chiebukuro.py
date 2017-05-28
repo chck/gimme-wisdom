@@ -10,11 +10,11 @@ class ChiebukuroSpider(scrapy.Spider):
     allowed_domains = ['detail.chiebukuro.yahoo.co.jp']
     base_url = 'http://detail.chiebukuro.yahoo.co.jp/qa/question_detail'
 
-    def __init__(self, page_id, *args, **kwargs):
+    def __init__(self, qid, *args, **kwargs):
         super(ChiebukuroSpider, self).__init__(*args, **kwargs)
-        self.page_id = page_id
+        self.qid = qid
         self.start_urls = [
-            '{}/{}'.format(self.base_url, page_id)
+            '{}/q{}'.format(self.base_url, qid)
         ]
 
     def parse(self, response):
