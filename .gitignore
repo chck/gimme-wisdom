@@ -60,3 +60,8 @@ target/
 
 # PyCharm
 .idea/
+
+# ScrapingHub
+scrapinghub.yml
+setup.py
+requirements.txt
