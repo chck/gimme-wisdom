@@ -14,6 +14,11 @@ Python 3.6.X
 ```
 # Run on local
 % scrapy crawl wisdom -a qid=1013160720 -o wisdom.csv
+
+# Run on scrapinghub.com (please see below for deployment)
+% open https://app.scrapinghub.com/p/$PROJECT_ID/jobs
+# Click "Run", Spiders: "windom", Arguments: {"qid": "1013160720"}
+# Enjoy Serverless!!
 ```
 
 ## Deployment
