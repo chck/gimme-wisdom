@@ -26,15 +26,13 @@ class ChiebukuroSpider(scrapy.Spider):
             yield GimmeWisdomItem(answer=best_answer)
 
         # other answer
-        yield scrapy.Request(response.url, callback=self.parse_answer)
+        for div in soup.find_all('div', class_='othrAns clrfx'):
+            answer = div.find('p', class_='queTxt').text
+            yield GimmeWisdomItem(answer=answer)
+
+        # pagination
         next_page = soup.find('div', class_='mdPager').find('a', class_='aft')
         if not next_page:
             yield
         else:
             yield scrapy.Request(next_page['href'])
-
-    def parse_answer(self, response):
-        soup = BeautifulSoup(response.body, 'lxml')
-        for div in soup.find_all('div', class_='othrAns clrfx'):
-            answer = div.find('p', class_='queTxt').text
-            yield GimmeWisdomItem(answer=answer)
