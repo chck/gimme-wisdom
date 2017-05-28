@@ -5,13 +5,13 @@ from bs4 import BeautifulSoup
 from gimme_wisdom.items import GimmeWisdomItem
 
 
-class ChiebukuroSpider(scrapy.Spider):
-    name = 'chiebukuro'
+class WisdomSpider(scrapy.Spider):
+    name = 'wisdom'
     allowed_domains = ['detail.chiebukuro.yahoo.co.jp']
     base_url = 'http://detail.chiebukuro.yahoo.co.jp/qa/question_detail'
 
     def __init__(self, qid, *args, **kwargs):
-        super(ChiebukuroSpider, self).__init__(*args, **kwargs)
+        super(WisdomSpider, self).__init__(*args, **kwargs)
         self.qid = qid
         self.start_urls = [
             '{}/q{}'.format(self.base_url, qid)
