@@ -8,15 +8,16 @@
 import scrapy
 
 
-class QItem(scrapy.Item):
-    """no question one answer
-    """
-    answer: str = scrapy.Field()
+class AnswerItem(scrapy.Item):
+    atitle: str = scrapy.Field()
+    adetail: str = scrapy.Field()
 
 
-class QandAsItem(scrapy.Item):
+class QandAsItem(scrapy.Field):
     """one question many answers
     """
-    answers: list = scrapy.Field()
-    question: str = scrapy.Field()
-    link: str = scrapy.Field()
+    url: str = scrapy.Field()
+    category: str = scrapy.Field()
+    qtitle: str = scrapy.Field()
+    qdetail: str = scrapy.Field()
+    answers: list = list(AnswerItem())

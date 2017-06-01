@@ -2,7 +2,9 @@
 import scrapy
 from bs4 import BeautifulSoup
 
-from gimme_wisdom.items import QItem
+
+class Answer(scrapy.Item):
+    answer: str = scrapy.Field()
 
 
 class YanswersSpider(scrapy.Spider):
@@ -23,12 +25,12 @@ class YanswersSpider(scrapy.Spider):
         # best answer is in only first page
         if '?page=' not in response.url:
             best_answer = soup.find('div', class_='mdPstd mdPstdBA othrAns clrfx').find('p', 'queTxt').text
-            yield QItem(answer=best_answer)
+            yield Answer(answer=best_answer)
 
         # other answer
         for div in soup.find_all('div', class_='othrAns clrfx'):
             answer = div.find('p', class_='queTxt').text
-            yield QItem(answer=answer)
+            yield Answer(answer=answer)
 
         # pagination
         next_page = soup.find('div', class_='mdPager').find('a', class_='aft')
