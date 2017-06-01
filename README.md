@@ -13,7 +13,7 @@ Python 3.6.X
 ## Usage
 ```
 # Run on local
-% scrapy crawl wisdom -a qid=1013160720 -o wisdom.csv
+% scrapy crawl yanswers -a qid=1013160720 -o yanswers.csv
 
 # Run on scrapinghub.com (please see below for deployment)
 % open https://app.scrapinghub.com/p/$PROJECT_ID/jobs
