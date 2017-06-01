@@ -8,6 +8,15 @@
 import scrapy
 
 
-class GimmeWisdomItem(scrapy.Item):
-    # define the fields for your item here like:
+class QItem(scrapy.Item):
+    """no question one answer
+    """
     answer = scrapy.Field()
+
+
+class QandAsItem(scrapy.Item):
+    """one question many answers
+    """
+    answers = scrapy.Field()
+    question = scrapy.Field()
+    link = scrapy.Field()
